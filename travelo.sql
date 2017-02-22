@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.4
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Feb 10, 2017 at 10:38 AM
--- Server version: 5.1.73-community
--- PHP Version: 5.4.45
+-- Host: 127.0.0.1
+-- Generation Time: Feb 22, 2017 at 04:50 PM
+-- Server version: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -58,9 +58,9 @@ DELIMITER ;
 --
 
 CREATE TABLE IF NOT EXISTS `booking` (
-  `id` bigint(10) NOT NULL,
+`id` bigint(10) NOT NULL,
   `user_id` bigint(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `booking`
@@ -76,12 +76,12 @@ INSERT INTO `booking` (`id`, `user_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `booking_meta` (
-  `id` bigint(10) NOT NULL,
+`id` bigint(10) NOT NULL,
   `booking_id` bigint(10) DEFAULT NULL COMMENT 'it''s a refrence key from table booking with field id',
   `room_id` varchar(255) DEFAULT NULL COMMENT 'it''s an reference key for table room with field id',
   `booking_metakey` varchar(255) DEFAULT NULL,
   `booking_metavalue` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `booking_meta`
@@ -101,10 +101,10 @@ INSERT INTO `booking_meta` (`id`, `booking_id`, `room_id`, `booking_metakey`, `b
 --
 
 CREATE TABLE IF NOT EXISTS `city` (
-  `id` bigint(4) NOT NULL,
+`id` bigint(4) NOT NULL,
   `state_id` int(4) DEFAULT NULL,
   `city_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -113,9 +113,9 @@ CREATE TABLE IF NOT EXISTS `city` (
 --
 
 CREATE TABLE IF NOT EXISTS `country` (
-  `id` int(3) NOT NULL,
+`id` int(3) NOT NULL,
   `country_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -124,10 +124,10 @@ CREATE TABLE IF NOT EXISTS `country` (
 --
 
 CREATE TABLE IF NOT EXISTS `hotels` (
-  `id` bigint(10) NOT NULL,
+`id` bigint(10) NOT NULL,
   `hotel_title` varchar(255) DEFAULT NULL,
   `hotels_desc` text
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `hotels`
@@ -143,13 +143,13 @@ INSERT INTO `hotels` (`id`, `hotel_title`, `hotels_desc`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `hotel_comments` (
-  `id` bigint(10) NOT NULL,
+`id` bigint(10) NOT NULL,
   `hotel_id` bigint(10) DEFAULT NULL COMMENT 'it''s an reference key for table hotel with field id',
   `user_id` bigint(10) DEFAULT NULL COMMENT 'it''s an reference key for table user with field id',
   `comment` text,
   `rate` int(1) DEFAULT NULL,
   `comment_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -158,11 +158,11 @@ CREATE TABLE IF NOT EXISTS `hotel_comments` (
 --
 
 CREATE TABLE IF NOT EXISTS `hotel_meta` (
-  `id` bigint(10) NOT NULL,
+`id` bigint(10) NOT NULL,
   `hotel_id` int(10) DEFAULT NULL,
   `hotel_metakey` varchar(255) DEFAULT NULL,
   `hotel_metavalue` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `hotel_meta`
@@ -185,11 +185,11 @@ INSERT INTO `hotel_meta` (`id`, `hotel_id`, `hotel_metakey`, `hotel_metavalue`) 
 --
 
 CREATE TABLE IF NOT EXISTS `rooms` (
-  `id` bigint(10) NOT NULL,
+`id` bigint(10) NOT NULL,
   `hotel_id` bigint(10) DEFAULT NULL COMMENT 'its as an refrence key from table hotel with field id',
   `room_title` varchar(255) DEFAULT NULL,
   `booking_status` int(2) DEFAULT '0' COMMENT '0=>not booked,1=>booked'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `rooms`
@@ -205,13 +205,13 @@ INSERT INTO `rooms` (`id`, `hotel_id`, `room_title`, `booking_status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `room_comments` (
-  `id` bigint(10) NOT NULL,
+`id` bigint(10) NOT NULL,
   `room_id` bigint(10) DEFAULT NULL COMMENT 'it''s an reference key for table room with field id',
   `user_id` bigint(10) DEFAULT NULL COMMENT 'it''s an reference key for table user with field id',
   `comment` text,
   `rate` int(1) DEFAULT NULL,
   `comment_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -220,11 +220,11 @@ CREATE TABLE IF NOT EXISTS `room_comments` (
 --
 
 CREATE TABLE IF NOT EXISTS `room_meta` (
-  `id` bigint(10) NOT NULL,
+`id` bigint(10) NOT NULL,
   `room_id` bigint(10) DEFAULT NULL,
   `room_metakey` varchar(255) DEFAULT NULL,
   `room_metavalue` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `room_meta`
@@ -246,14 +246,14 @@ INSERT INTO `room_meta` (`id`, `room_id`, `room_metakey`, `room_metavalue`) VALU
 --
 
 CREATE TABLE IF NOT EXISTS `site_setting` (
-  `id` int(3) NOT NULL,
+`id` int(3) NOT NULL,
   `site_title` varchar(255) DEFAULT NULL,
   `logo_image` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `host_name` varchar(255) DEFAULT NULL,
   `db_name` varchar(255) DEFAULT NULL,
   `db_password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -262,10 +262,10 @@ CREATE TABLE IF NOT EXISTS `site_setting` (
 --
 
 CREATE TABLE IF NOT EXISTS `state` (
-  `id` int(4) NOT NULL,
+`id` int(4) NOT NULL,
   `country_id` int(3) DEFAULT NULL,
   `state_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -274,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `state` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(5) NOT NULL,
+`id` int(5) NOT NULL,
   `user_name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `user_type` int(2) DEFAULT NULL COMMENT '1=>admin,2=>vendor,3=>user',
@@ -282,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `create_date` datetime DEFAULT NULL,
   `last_login_date` datetime DEFAULT NULL,
   `ip_address` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `user`
@@ -302,11 +302,11 @@ INSERT INTO `user` (`id`, `user_name`, `password`, `user_type`, `user_email`, `c
 --
 
 CREATE TABLE IF NOT EXISTS `user_meta` (
-  `id` bigint(10) NOT NULL,
+`id` bigint(10) NOT NULL,
   `user_id` int(5) DEFAULT NULL COMMENT 'it''s a reference key from user table as field id',
   `user_metakey` varchar(255) NOT NULL,
   `user_metavalue` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `user_meta`
@@ -334,85 +334,85 @@ INSERT INTO `user_meta` (`id`, `user_id`, `user_metakey`, `user_metavalue`) VALU
 -- Indexes for table `booking`
 --
 ALTER TABLE `booking`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `booking_meta`
 --
 ALTER TABLE `booking_meta`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `city`
 --
 ALTER TABLE `city`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `country`
 --
 ALTER TABLE `country`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hotels`
 --
 ALTER TABLE `hotels`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hotel_comments`
 --
 ALTER TABLE `hotel_comments`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hotel_meta`
 --
 ALTER TABLE `hotel_meta`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `room_comments`
 --
 ALTER TABLE `room_comments`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `room_meta`
 --
 ALTER TABLE `room_meta`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `site_setting`
 --
 ALTER TABLE `site_setting`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `state`
 --
 ALTER TABLE `state`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user_meta`
 --
 ALTER TABLE `user_meta`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -422,72 +422,72 @@ ALTER TABLE `user_meta`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `booking_meta`
 --
 ALTER TABLE `booking_meta`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
-  MODIFY `id` bigint(4) NOT NULL AUTO_INCREMENT;
+MODIFY `id` bigint(4) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `country`
 --
 ALTER TABLE `country`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `hotels`
 --
 ALTER TABLE `hotels`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hotel_comments`
 --
 ALTER TABLE `hotel_comments`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `hotel_meta`
 --
 ALTER TABLE `hotel_meta`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `room_comments`
 --
 ALTER TABLE `room_comments`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `room_meta`
 --
 ALTER TABLE `room_meta`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `site_setting`
 --
 ALTER TABLE `site_setting`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `state`
 --
 ALTER TABLE `state`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `user_meta`
 --
 ALTER TABLE `user_meta`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
