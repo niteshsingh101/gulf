@@ -114,10 +114,10 @@ class Admin extends CI_Controller {
 	/*
 	
 	*/
-	public function addVendor()
+	public function addCategory()
 	{
 		
-		_adminLayout("addVendor");
+		_adminLayout("addCategory");
 	}
 	/*
 	*/
