@@ -12,26 +12,26 @@
                   <li><a><i class="fa fa-group"></i>Sales And Rentals<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#">Category</a></li>
-                      <li><a href="#">Sub Category</a></li>
+                      <li><a href="#">Subcategory</a></li>
                       <li><a href="#">Content</a></li>
                     </ul>
                   </li>
 
-                   <li><a><i class="fa fa-group"></i>Sales And Rentals<span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class="fa fa-group"></i>Industries<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#">Category</a></li>
-                      <li><a href="#">Sub Category</a></li>
+                      <li><a href="#">Subcategory</a></li>
                       <li><a href="#">Content</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-group"></i>User<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-group"></i>Page<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url();?>admin/userList">View User</a></li>
+                      <li><a href="#">View Pages</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-group"></i>Hotels<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-group"></i>Slider<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url();?>admin/hotelList">View Hotels</a></li>
+                      <li><a href="#">View Sliders</a></li>
                     </ul>
                   </li>
 				  </ul>
