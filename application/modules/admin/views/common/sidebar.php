@@ -13,7 +13,7 @@
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url()?>admin/CategoryList">Category</a></li>
                       <li><a href="#">Subcategory</a></li>
-                      <li><a href="#">Content</a></li>
+                      <li><a href="<?php echo base_url()?>admin/salesContentList">Content</a></li>
                     </ul>
                   </li>
 

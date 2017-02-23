@@ -121,6 +121,23 @@ class Admin extends CI_Controller {
 	}
 	/*
 	*/
+	public function salesContentList()
+	{
+		/*$categoryquery= $this->db->query("Select * from category");
+		$data=array();
+		foreach($categoryquery->result() as $obj)
+		{
+		$data['data'][]=$obj;
+		}*/
+		_adminLayout("salesContentList");
+	}
+	/**/
+	public function addSalesContent(){
+		
+		_adminLayout("addSalesContent");
+	}
+	/*
+	*/
 	public function deleteVendor()
 	{
 		
