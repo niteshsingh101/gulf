@@ -1,4 +1,93 @@
-<div class="footer-wrap">
+<?php 
+include("common/head.php");
+?>
+    <div class="main-wrap">
+      <div class="container">
+        <div class="content-wrap"><div id="wsite-content" class="wsite-elements wsite-not-footer">
+	<div><div style="height:0px;overflow:hidden"></div>
+<div id="963051883441692958-slideshow" class="wslide"><table class="wslide-main"><tbody><tr><td><div class="wslide-content disable-user-select" style="height: 640px;">&nbsp;<div class="wslide-content-inner"><div class="wslide-slides"><div class="wslide-slide" style="display: none;"><a href="/lift.html"><div class="wslide-slide-inner1"><div class="wslide-slide-inner2" style="width: 945px; left: -473px; top: -321px; opacity: 0;"><img src="assets/images/innovative-solutions_1_orig.jpg" style="width: 945px;"></div></div></a></div><div class="wslide-slide" style="display: none;"><a href="/transport.html"><div class="wslide-slide-inner1"><div class="wslide-slide-inner2" style="width: 945px; left: -473px; top: -321px; opacity: 0;"><img src="assets/images/heavy-transportation_2_orig.jpg" style="width: 945px;"></div></div></a></div><div class="wslide-slide" style="display: none;"><a href="/crane-sales.html"><div class="wslide-slide-inner1"><div class="wslide-slide-inner2" style="width: 945px; left: -473px; top: -321px; opacity: 0;"><img src="assets/images/equipments-for-sale_2_orig.jpg" style="width: 945px;"></div></div></a></div><div class="wslide-slide" style="display: block;"><div class="wslide-slide-inner1"><div class="wslide-slide-inner2" style="width: 945px; left: -473px; top: -321px; opacity: 0.99;"><img src="assets/images/team-solutions_orig.jpg" style="width: 945px;"></div></div></div></div></div><div class="wslide-overlay-top-left disable-user-select" style="padding-top: 0px; padding-left: 7px;"><div class="wslide-button-wrap" style="display: none; opacity: 0;"><span class="wslide-play wslide-button disable-user-select" style="opacity: 0; display: none;"><span class="wslide-button-inner">Play <span class="wslide-button-icon"></span></span><span class="wslide-button-bg"></span></span></div><div class="wslide-button-wrap" style="display: none; opacity: 6.16838e-05;"><span class="wslide-pause wslide-button disable-user-select" style="opacity: 1; display: inline-block;"><span class="wslide-button-inner">Pause <span class="wslide-button-icon"></span></span><span class="wslide-button-bg"></span></span></div></div><div class="wslide-overlay-top-right disable-user-select" style="padding-top: 0px; padding-right: 8px;"><div class="wslide-button-wrap" style="display: none; opacity: 6.16838e-05;"><span class="wslide-prev wslide-button disable-user-select"><span class="wslide-button-inner"><span class="wslide-button-icon"></span></span><span class="wslide-button-bg"></span></span></div>&nbsp;<div class="wslide-button-wrap" style="display: none; opacity: 6.16838e-05;"><span class="wslide-next wslide-button disable-user-select"><span class="wslide-button-inner"><span class="wslide-button-icon"></span></span><span class="wslide-button-bg"></span></span></div></div><div class="wslide-overlay-left disable-user-select" style="padding-left: 7px;"></div><div class="wslide-overlay-right disable-user-select" style="padding-right: 8px;"></div></div></td></tr></tbody></table></div>
+
+
+<div style="height:0px;overflow:hidden"></div></div>
+
+<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+<hr class="styled-hr" style="width:100%;"></hr>
+<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+
+<div class="paragraph" style="text-align:center;"><font size="5">Gulf Special Services, Inc is a passionate company providing heavy lifting services to all kinds of projects, no matter the magnitude involved. We are proud to always have met customer expectations and needs.</font><br /><font size="4">&#8203;</font><br /><strong><font size="5" color="#c23b3b">WHEN YOU SAY LARGE PROJECTS, WE SEE TONS OF OPPORTUNITIES.</font></strong></div>
+
+<div><div style="height: 0px; overflow: hidden; width: 100%;"></div>
+<hr class="styled-hr" style="width:100%;"></hr>
+<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+
+<div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+	<table class="wsite-multicol-table">
+		<tbody class="wsite-multicol-tbody">
+			<tr class="wsite-multicol-tr">
+				<td class="wsite-multicol-col" style="width:24.949494949495%; padding:0 15px;">
+					
+						
+
+<div><div class="wsite-image wsite-image-border-none " style="padding-top:0px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:right">
+<a href='/lift.html'>
+<img src="assets/images/heavy-lift_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+
+					
+				</td>				<td class="wsite-multicol-col" style="width:25.050505050505%; padding:0 15px;">
+					
+						
+
+<div><div class="wsite-image wsite-image-border-none " style="padding-top:0px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:right">
+<a href='/transport.html'>
+<img src="assets/images/heavy-transport_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+
+					
+				</td>				<td class="wsite-multicol-col" style="width:25%; padding:0 15px;">
+					
+						
+
+<div><div class="wsite-image wsite-image-border-none " style="padding-top:0px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:center">
+<a href='/market--expertise.html'>
+<img src="assets/images/market-expertise_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+
+					
+				</td>				<td class="wsite-multicol-col" style="width:25%; padding:0 15px;">
+					
+						
+
+<div><div class="wsite-image wsite-image-border-none " style="padding-top:0px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:center">
+<a href='/sales--rentals.html'>
+<img src="assets/images/sales-rentals_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+
+					
+				</td>			</tr>
+		</tbody>
+	</table>
+</div></div></div>
+
+<div class="wsite-spacer" style="height:50px;"></div>
+</div>
+</div>
+      </div><!-- end container -->
+    </div>
+
+    <div class="footer-wrap">
     	<div class="container">
     		<div class="footer"><div class='wsite-elements wsite-footer'>
 <div class="paragraph" style="text-align:center;"><strong><font size="4" color="#f8eaa9">LOCATIONS</font></strong></div>
@@ -39,10 +128,10 @@
     </div><!-- end footer-wrap -->
 	</div>
 
-	<div class="nav mobile-nav">
+    <div class="nav mobile-nav">
         <label class="hamburger"><span></span></label>
         <ul class="wsite-menu-default">
-        		<li id="pg816842787735413894" class="wsite-menu-item-wrap">
+        		<li id="active" class="wsite-menu-item-wrap">
         			<a
         						href="/"
         				class="wsite-menu-item"
@@ -51,7 +140,7 @@
         			</a>
         			
         		</li>
-        		<li id="active" class="wsite-menu-item-wrap">
+        		<li id="pg554947093113735719" class="wsite-menu-item-wrap">
         			<a
         						href="/lift.html"
         				class="wsite-menu-item"
@@ -361,10 +450,9 @@
         		</li>
         </ul>
     </div>
-	
-	
-	<script type="text/javascript" src="/files/theme/plugins.js?1479177049"></script>
-	<script type="text/javascript" src="/files/theme/custom.js?1479177049"></script>
+
+	<script type="text/javascript" src="assets/js/plugins.js?1479177049"></script>
+	<script type="text/javascript" src="assets/js/custom.js?1479177049"></script>
 
 		<script type="text/javascript">
 

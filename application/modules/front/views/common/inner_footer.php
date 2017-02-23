@@ -1,4 +1,4 @@
-<div class="footer-wrap">
+ <div class="footer-wrap">
     	<div class="container">
     		<div class="footer"><div class='wsite-elements wsite-footer'>
 <div class="paragraph" style="text-align:center;"><strong><font size="4" color="#f8eaa9">LOCATIONS</font></strong></div>
@@ -363,8 +363,8 @@
     </div>
 	
 	
-	<script type="text/javascript" src="/files/theme/plugins.js?1479177049"></script>
-	<script type="text/javascript" src="/files/theme/custom.js?1479177049"></script>
+	<script type="text/javascript" src="assets/js/plugins.js?1479177049"></script>
+	<script type="text/javascript" src="assets/js/custom.js?1479177049"></script>
 
 		<script type="text/javascript">
 

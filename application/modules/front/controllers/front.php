@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Vendor extends CI_Controller {
+class Front extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,22 +20,8 @@ class Vendor extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if(!$this->session->userdata('auth'))
-		{
-			redirect(site_url()."/auth/");
-		}
-		else if($this->session->userdata('auth')) 
-		{
-		  $userType=$this->session->userdata("userType");
-		  if($userType==1)
-		  {
-			 redirect(site_url()."/admin"); 
-		  }
-		 else if($userType==3)
-		  {
-			 redirect(site_url()."/user"); 
-		  }
-		}
+		
+		
 		$this->load->helper("layout_helper");
 	} 
 	/*
@@ -55,7 +41,7 @@ class Vendor extends CI_Controller {
 	/*
 	*/
 	/**/
-	public function updateVendor()
+	public function updateFront()
 	{
 		
 		
