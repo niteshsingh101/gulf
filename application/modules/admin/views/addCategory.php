@@ -27,7 +27,7 @@
                     <!--<form class="form-horizontal form-label-left" novalidate>-->
 					<?php //echo validation_errors(); ?>
 					<?php $attributes = array('class' => 'form-horizontal form-label-left', 'id' => 'myform');
-					echo form_open_multipart('/admin/insertVendor', $attributes);?>
+					echo form_open_multipart('/admin/insertCategory', $attributes);?>
 
                       <span class="section">Category Info</span>
 					
@@ -35,7 +35,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Category Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-						<input id="category_name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="1" name="category_name" placeholder="e.g JonDoe21" value="<?php //echo set_value('user_name'); ?>" required="required" type="text"><span style="color:#FF0000"><?php //echo form_error('user_name'); ?></span>
+						<input id="category_name" class="form-control col-md-7 col-xs-12" name="category_name" placeholder="e.g JonDoe21" value="<?php echo set_value('category_name'); ?>" required="required" type="text"><span style="color:#FF0000"><?php echo form_error('category_name'); ?></span>
                         </div>
                       </div>
                       <div class="ln_solid"></div>

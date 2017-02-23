@@ -47,14 +47,14 @@
 					/* if( ! ini_get('date.timezone') )
 					{
 						date_default_timezone_set('Asia/Kolkata');
-					}
-					 foreach($data as $vendor){
-					  */ ?>
+					}*/
+					 foreach($data as $category){
+					   ?>
                         <tr>
-                          <td><?php //echo $vendor->name;?></td>
+                          <td><?php echo $category->category_name;?></td>
                           <td><?php //echo $vendor->user_name;?></td>
                         </tr>
-					<?php //}?>	 
+					<?php }?>	 
                         </tbody>
                     </table>
                   </div>

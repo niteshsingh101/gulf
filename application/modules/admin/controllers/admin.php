@@ -103,13 +103,13 @@ class Admin extends CI_Controller {
 	*/
 	public function CategoryList()
 	{
-		/*$vendorquery= $this->db->query("Select *, getUserName(id) as name, getPhone(id) as phone from user where user_type=2");
+		$categoryquery= $this->db->query("Select * from category");
 		$data=array();
-		foreach($vendorquery->result() as $obj)
+		foreach($categoryquery->result() as $obj)
 		{
 		$data['data'][]=$obj;
-		}*/
-		_adminLayout("categoryList");
+		}
+		_adminLayout("categoryList", $data);
 	}
 	/*
 	
@@ -125,89 +125,34 @@ class Admin extends CI_Controller {
 	{
 		
 	}
-	/**/
-	public function updateVendor()
-	{
-		
-		
-	}
-	/**/
-	public function hotelList()
-	{
-		_adminLayout("hotelList");
-	}
-	/*  */
-	public function vendorHotel()
-	{
-		
-		
-	}
-	/**/
-	public function hotelRoom()
-	{
-		
-	}
-	/**/
-	public function room()
-	{
-		
-		
-	}
-	/**/
-	public function userList()
-	{
-		
-		_adminLayout("userList");
-	}
+	
 	/* Insert Vendor details */
-	public function insertVendor()
+	public function insertCategory()
 	 {
 	    $this->load->library('form_validation');
-		if ($this->form_validation->run('vendorAdminForm') == FALSE)
+		if ($this->form_validation->run('categoryForm') == FALSE)
 		{
-		 _adminLayout("addVendor");
+		 _adminLayout("addCategory");
 		}
 		else
 		{
-	 	$user_name=$this->input->post('user_name');
-		$name= $this->input->post('name');
-		$user_email= $this->input->post('email');
-		$password= $this->input->post('password');
-		$phone= $this->input->post('phone');
-		$address= $this->input->post('address');
-		$create_date= date('Y-m-d H:i:s');
-		$ip_address = $this->input->ip_address();
-		$user_type= 2;
+	 	$category_name=$this->input->post('category_name');
 		$data= array(
-						'user_name' => $user_name,
-						'password' => $password,
-						'user_type' => $user_type,
-						'user_email' => $user_email,
-						'create_date' => $create_date,
-						'ip_address' => $ip_address
+						'category_name' => $category_name
 						);
 							
-		if($this->db->insert('user', $data)){
-				$user_id= $this->db->insert_id();
-				$userMeta= array(
-						'name'=> $name,
-						'address'=> $address,
-						'phone'=>$phone,
-		
-						);
-						if(_user_metaLayout($userMeta, $user_id))
-						{
-							redirect(site_url()."/admin/vendorList"); 
-						}
-			  	}		
+		if($this->db->insert('category', $data)){
+			redirect(base_url()."admin/CategoryList"); 
+						
+		}		
 		}
 	}			
-	public function email_check($email)
+	public function category_check($category_name)
 		{
-		    $query = $this->db->query("SELECT * FROM user where user_email='$email'");
+		    $query = $this->db->query("SELECT * FROM category where category_name='$category_name'");
 		   	if($query->num_rows()>0)
 		    {
-			    $this->form_validation->set_message('email_check', 'The %s field can not be duplicate');
+			    $this->form_validation->set_message('category_check', 'The category name field can not be duplicate');
 				return FALSE;
 		    }
 			else
