@@ -29,45 +29,14 @@ class Front extends CI_Controller {
 	*/
 	public function index()
 	{
-		_vendorLayout("dashboard");
+		_vendorLayout("index");
 	}
 	/*
 	
-	*/
-	public function viewProfile()
-	{
-		_vendorLayout("profile");
-	}
-	/*
+	
 	*/
 	/**/
-	public function updateFront()
-	{
-		
-		
-	}
-	/**/
-	public function hotelList()
-	{
-		_vendorLayout("hotelList");
-	}
-	/*  */
-	public function hotelRoom()
-	{
-		
-	}
-	/**/
-	public function room()
-	{
-		
-		
-	}
-	/**/
-	public function userList()
-	{
-		
-		_vendorLayout("userList");
-	}
+	  
 	
 
 }//end class
