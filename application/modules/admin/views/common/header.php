@@ -24,6 +24,10 @@
     <link href="<?php echo base_url();?>admin_assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>admin_assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>admin_assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+	<script src="<?php echo base_url();?>admin_assets/editor/ckeditor.js"></script>
+	<script src="<?php echo base_url();?>admin_assets/editor/js/sample.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url();?>admin_assets/editor/css/samples.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>admin_assets/editor/toolbarconfigurator/lib/codemirror/neo.css">
 </head>
 
   <body class="nav-md">
