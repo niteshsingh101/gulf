@@ -40,7 +40,7 @@ $config['base_url'] = $_SERVER['HTTP_HOST'];
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '/application/modules/front/views/index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
