@@ -101,23 +101,18 @@ class Admin extends CI_Controller {
 	}
 	/*
 	*/
-	public function CategoryList()
-	{
-		$categoryquery= $this->db->query("Select * from category");
-		$data=array();
-		foreach($categoryquery->result() as $obj)
-		{
-		$data['data'][]=$obj;
+	public function salesSubcategoryList(){
+		$sbucatquery= $this->db->query("Select * from sales_subcategory");
+		$data = array();
+		foreach($sbucatquery->result() as $result){
+			$data['data'][]= $result;
 		}
-		_adminLayout("categoryList", $data);
+		_adminLayout('SalesSubcategoryList', $data);
 	}
-	/*
-	
-	*/
-	public function addCategory()
-	{
+	/**/
+	public function addSalessubcategory(){
 		
-		_adminLayout("addCategory");
+		_adminLayout('addSalesSubcategory');
 	}
 	/*
 	*/
@@ -136,47 +131,183 @@ class Admin extends CI_Controller {
 		
 		_adminLayout("addSalesContent");
 	}
-	/*
-	*/
-	public function deleteVendor()
-	{
+	/**/
+	public function salesCategoryList(){
+	
+		
+		$salesquery= $this->db->query("Select * from sales_category ");
+		$data=array();
+		foreach($salesquery->result() as $obj)
+		{
+		$data['data'][]=$obj;
+		}
+		_adminLayout("salesCategoryList", $data);
+		//redirect(base_url()."admin/SalesCategoryList", $data);
+	}
+	/**/
+	public function addSalesCategory(){
+		_adminLayout("addSalesCategory");
+	}
+	/**/
+	public function insertSalesCategory(){
+		$this->load->library('form_validation');
+		if ($this->form_validation->run('categoryForm') == FALSE)
+		{
+		 _adminLayout("addSalesCategory");
+		}
+		else{
+		$cat_title = $this->input->post('cat_title');
+		$cat_desc = $this->input->post('cat_desc');
+		//$cat_img = $this->input->post('cat_img');
+		$data = array(
+			'title' => $cat_title,
+			'description' => $cat_desc,
+			'image' => ''
+		);
+		if($this->db->insert('sales_category', $data)){
+			$inser_id= $this->db->insert_id();
+		}		
+		$config['upload_path']          = './uploads/';
+     	$config['allowed_types']        = 'gif|jpg|png|jpeg';
+     	$config['max_size']             = 10210;
+     	$config['max_width']            = 10254;
+     	$config['max_height']           = 7682;
+
+        $this->load->library('upload', $config);
+
+         if ( ! $this->upload->do_upload('cat_img'))
+         {
+          	$error = array('error' => $this->upload->display_errors());
+
+          	_adminLayout('addSalesCategory', $error);
+          }
+				else{
+				$data = array('upload_data' => $this->upload->data(), 'id' => $inser_id);
+				
+				 _adminLayout('upload_success', $data);
+				 
+				 }
+		
+		}
+	}
+	/**/
+	public function insertSalessubcategory(){
+		$this->load->library('form_validation');
+		if ($this->form_validation->run('subCategoryForm') == FALSE)
+		{
+		 _adminLayout("addSalessubcategory");
+		}
+		else{
+		$cat_title = $this->input->post('cat_title');
+		$cat_desc = $this->input->post('cat_desc');
+		$parent_cat = $this->input->post('parent_cat');
+		$data = array(
+			'title' => $cat_title,
+			'description' => $cat_desc,
+			'parent_id' => $parent_cat,
+			'image' => ''
+		);
+		if($this->db->insert('sales_subcategory', $data)){
+			$inser_id= $this->db->insert_id();
+		}		
+		$config['upload_path']          = './uploads/';
+     	$config['allowed_types']        = 'gif|jpg|png|jpeg';
+     	$config['max_size']             = 10210;
+     	$config['max_width']            = 10254;
+     	$config['max_height']           = 7682;
+
+        $this->load->library('upload', $config);
+
+         if ( ! $this->upload->do_upload('cat_img'))
+         {
+			 //echo "uploadfail"; die;
+          	$error = array('error' => $this->upload->display_errors());
+
+          	_adminLayout('addSalesCategory', $error);
+          }
+				else{
+				$data = array('upload_data' => $this->upload->data(), 'sid' => $inser_id);
+				
+				 _adminLayout('upload_success', $data);
+				 
+				 }
+		
+		}
+	}
+	
+	/**/
+	public function deleteSalesCategory(){
+		 $rowId = $this->uri->segment(3); 
+		if(!empty($rowId)){
+			
+			$tableName= "sales_category";
+			$this->load->model("delete_model", "admin");
+			
+			if($this->admin->dataDelete($rowId, $tableName)){
+				$msg='<h5 style="color:red">Sales category is deleted successfully</h5>';
+		  		$this->session->set_flashdata('delmsg',$msg);
+		  		redirect(base_url()."admin/SalesCategoryList");;
+			}
+			else{
+				$msg='<h5 style="color:red">Sales category is not deleted </h5>';
+		  		$this->session->set_flashdata('delmsg',$msg);
+		  		//redirect(base_url()."admin/SalesCategoryList");
+				_adminLayout('SalesCategoryList');
+			}
+		}
+		
+	}
+	/**/
+	public function deleteSalessubcategory(){
+		 $rowId = $this->uri->segment(3); 
+		if(!empty($rowId)){
+			
+			$tableName= "sales_subcategory";
+			$this->load->model("delete_model", "admin");
+			if($this->admin->dataDelete($rowId, $tableName)){
+				$msg='<h5 style="color:red">Sales category is deleted successfully</h5>';
+		  		$this->session->set_flashdata('delmsg',$msg);
+		  		redirect(base_url()."admin/SalesSubcategoryList");
+			}
+			else{
+				$msg='<h5 style="color:red">Sales category is not deleted </h5>';
+		  		$this->session->set_flashdata('delmsg',$msg);
+		  		//redirect(base_url()."admin/SalesSubcategoryList");
+				_adminLayout('SalesSubcategoryList');
+			}
+		}
 		
 	}
 	
-	/* Insert Vendor details */
-	public function insertCategory()
-	 {
-	    $this->load->library('form_validation');
-		if ($this->form_validation->run('categoryForm') == FALSE)
+	public function sales_category_check($category_name)
 		{
-		 _adminLayout("addCategory");
-		}
-		else
-		{
-	 	$category_name=$this->input->post('category_name');
-		$data= array(
-						'category_name' => $category_name
-						);
-							
-		if($this->db->insert('category', $data)){
-			redirect(base_url()."admin/CategoryList"); 
-						
-		}		
-		}
-	}			
-	public function category_check($category_name)
-		{
-		    $query = $this->db->query("SELECT * FROM category where category_name='$category_name'");
+		    $query = $this->db->query("SELECT * FROM sales_category where title='$category_name'");
 		   	if($query->num_rows()>0)
 		    {
-			    $this->form_validation->set_message('category_check', 'The category name field can not be duplicate');
+			    $this->form_validation->set_message('sales_category_check', 'The category name field can not be duplicate');
 				return FALSE;
 		    }
 			else
 			{
 				return TRUE;
 			}
-		}		
+		}
+	/*Subcategory validation*/
+	public function sales_subcategory_check($subcategory_name)
+		{
+		    $query = $this->db->query("SELECT * FROM sales_subcategory where title='$subcategory_name'");
+		   	if($query->num_rows()>0)
+		    {
+			    $this->form_validation->set_message('sales_subcategory_check', 'The category name field can not be duplicate');
+				return FALSE;
+		    }
+			else
+			{
+				return TRUE;
+			}
+		}
+
+	
 	/*User name validation*/
 	public function username_check($user_name)
 		{

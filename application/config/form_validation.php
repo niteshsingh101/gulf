@@ -2,18 +2,32 @@
 $config = array(
                  'categoryForm' => array(
 									array(
-                                            'field' => 'category_name',
-                                            'label' => 'category_name',
+                                            'field' => 'cat_title',
+                                            'label' => 'cat_title',
                                             'rules' => 'required'
                                          ),
                                     array(
-                                            'field' => 'category_name',
-                                            'label' => 'category_name',
-                                            'rules' => 'callback_category_check'
+                                            'field' => 'cat_title',
+                                            'label' => 'cat_title',
+                                            'rules' => 'callback_sales_category_check'
                                          ),
 										  
 										 
-                                    )
+                                    ),
+				'subCategoryForm' => array(
+									array(
+                                            'field' => 'cat_title',
+                                            'label' => 'cat_title',
+                                            'rules' => 'required'
+                                         ),
+                                    array(
+                                            'field' => 'cat_title',
+                                            'label' => 'cat_title',
+                                            'rules' => 'callback_sales_subcategory_check'
+                                         ),
+										  
+										 
+                                    )					
                                      
                );
 			   

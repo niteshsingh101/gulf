@@ -3,7 +3,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Category Informations</h3>
+                <h3>Add Sales Category</h3>
               </div>
 
               <div class="title_right">
@@ -27,15 +27,33 @@
                     <!--<form class="form-horizontal form-label-left" novalidate>-->
 					<?php //echo validation_errors(); ?>
 					<?php $attributes = array('class' => 'form-horizontal form-label-left', 'id' => 'myform');
-					echo form_open_multipart('/admin/insertCategory', $attributes);?>
+					echo form_open_multipart('/admin/insertSalesCategory', $attributes);?>
 
                       <span class="section">Category Info</span>
 					
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Category Name <span class="required">*</span>
+						
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Title <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-						<input id="category_name" class="form-control col-md-7 col-xs-12" name="category_name" placeholder="e.g JonDoe21" value="<?php echo set_value('category_name'); ?>" required="required" type="text"><span style="color:#FF0000"><?php echo form_error('category_name'); ?></span>
+                          <input id="cat_title" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" name="cat_title" 
+						  placeholder="both name(s) e.g Jon Doe" value="<?php echo set_value('cat_title'); ?>" required="required" type="text">
+						  <span style="color:#FF0000"><?php echo form_error('cat_title'); ?></span>
+                        </div>
+                      </div>
+					  <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Image <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="cat_img" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" name="cat_img" required="required" type="file">
+                        </div>
+                      </div>
+                      
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descriptions <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="editor" required="required" name="cat_desc" class="form-control col-md-7 col-xs-12" ><?php //echo set_value('address'); ?></textarea>
                         </div>
                       </div>
                       <div class="ln_solid"></div>
@@ -53,3 +71,6 @@
           </div>
         </div>
         <!-- /page content -->
+		<script>
+initSample();
+</script>

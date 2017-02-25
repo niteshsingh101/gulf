@@ -1,9 +1,9 @@
-        <!-- page content -->
+ <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Categories</h3>
+                <h3>Sales Category List</h3>
               </div>
 
               <div class="title_right">
@@ -26,35 +26,50 @@
                 <div class="x_panel">
                   <div class="x_title">
                     
-					<input type="button" class="btn btn-success" onclick="location.href='<?php echo base_url();?>admin/addCategory/';" value="Add New Category" />
+					<input type="button" class="btn btn-success" onclick="location.href='<?php echo base_url();?>admin/addSalesCategory/'" value="Add New Category" />
                      <div class="clearfix"></div>
 					</div>
                   <div class="x_content">
                     <p class="text-muted font-13 m-b-30">
                      Category List.
                     </p>
+					<p><?php echo $this->session->flashdata('delmsg');?></p>
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th>Name</th>
-                          <th>User Name</th>
+                          <th>Description</th>
+                          <th>Image</th>
+						  <th>Action</th>
+                          
+                          
                         </tr>
                       </thead>
 
 
                       <tbody>
 					  <?php 
-					/* if( ! ini_get('date.timezone') )
+					 /* if( ! ini_get('date.timezone') )
 					{
 						date_default_timezone_set('Asia/Kolkata');
 					}*/
-					 foreach($data as $category){
-					   ?>
+				if(!empty($data)){	
+					 foreach($data as $salcat){
+					 
+					 
+					  ?>
                         <tr>
-                          <td><?php echo $category->category_name;?></td>
-                          <td><?php //echo $vendor->user_name;?></td>
-                        </tr>
-					<?php }?>	 
+                          <td><?php echo $salcat->title;?></td>
+                          <td><?php echo substr(preg_replace("/&#?[a-z0-9]+;/i","",$salcat->description),0,550) ;?></td>
+                          <td><img src="<?php echo base_url()?>uploads/<?php echo $salcat->image;?>" style="width:100px;height:100px;" /></td>
+						  <td><img src="<?php echo base_url()?>images/icon/edit.png" /> | 
+						  <a href="<?php echo base_url()?>admin/deleteSalesCategory/<?php echo $salcat->id?>" > <img src="<?php echo base_url()?>images/icon/del.png"
+						  onclick="return confirm('Are you sure you want to delete?');" /></a></td>
+                           
+                         </tr>
+					<?php }
+				}	
+					?>	 
                         </tbody>
                     </table>
                   </div>
