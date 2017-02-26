@@ -3,7 +3,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Vendor Informations</h3>
+                <h3>Sales Content Informations</h3>
               </div>
 
               <div class="title_right">
@@ -27,64 +27,61 @@
                     <!--<form class="form-horizontal form-label-left" novalidate>-->
 					<?php //echo validation_errors(); ?>
 					<?php $attributes = array('class' => 'form-horizontal form-label-left', 'id' => 'myform');
-					echo form_open_multipart('/admin/insertVendor', $attributes);?>
+					echo form_open_multipart('/admin/insertSalesContent', $attributes);?>
 
-                      <span class="section">Vendor Info</span>
+                      <span class="section">Sales Content Info</span>
 					
 						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">User Name <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Category<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-						<input id="user_name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="1" name="user_name" placeholder="single name(s) e.g JonDoe21" value="<?php echo set_value('user_name'); ?>" required="required" type="text"><span style="color:#FF0000"><?php echo form_error('user_name'); ?></span>
+						<select name="parent_cat" id="parent_cat" class="form-control col-md-7 col-xs-12"
+						 onchange="subCatValue(this.value)">
+						<option value="">Select parent category</option>
+						<?php 
+						$query= $this->db->query("select * from sales_category");
+						if($query->num_rows()>0){
+							foreach($query->result() as $result){
+							
+						
+						?>
+						<option value="<?php echo $result->id;?>" ><?php echo $result->title;?></option>
+						<?php 
+							}
+						}
+						?>
+						</select>
                         </div>
                       </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
+					  <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Subcategory <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="both name(s) e.g Jon Doe" value="<?php echo set_value('name'); ?>" required="required" type="text">
+						<select name="sub_cat" id="sub_cat" class="form-control col-md-7 col-xs-12">
+						<option value="">Select subcategory</option>
+						
+						</select>
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Title <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="email" id="email" name="email" value="<?php echo set_value('email'); ?>" required="required" class="form-control col-md-7 col-xs-12"><span style="color:#FF0000"><?php echo form_error('email'); ?></span>
+                          <input id="content_title" class="form-control col-md-7 col-xs-12" name="content_title" placeholder="both name(s) e.g Jon Doe" value="<?php echo set_value('name'); ?>" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Confirm Email <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Image <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="email" id="email2" name="confirm_email" data-validate-linked="email" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      
-                       
-                      <div class="item form-group">
-                        <label for="password" class="control-label col-md-3">Password</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="password" type="password" name="password" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required">
+                          <input id="content_img" class="form-control col-md-7 col-xs-12" name="content_img" required="required" type="file">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Repeat Password</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Telephone <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Content 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="tel" id="telephone" name="phone" value="<?php echo set_value('phone'); ?>" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Address <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="editor" required="required" name="address" class="form-control col-md-7 col-xs-12"><?php echo set_value('address'); ?></textarea>
+                          <textarea id="editor" name="content_desc" class="form-control col-md-7 col-xs-12"><?php echo set_value('sales_content'); ?></textarea>
                         </div>
                       </div>
                       <div class="ln_solid"></div>
@@ -104,4 +101,23 @@
         <!-- /page content -->
 		<script>
 			initSample();
+		function subCatValue(parentId){
+			$("#sub_cat option").remove();
+			var options;
+			$.ajax({
+				url :'<?php echo base_url()?>admin/subCatValue',
+				type :'POST',
+				data : {'parentID': parentId},
+				success: function(result){
+				//alert(result);
+				$.each(result, function(key, value){
+					//alert(key);
+					options += '<option value="'+value.id+'">'+value.title+'</option>';
+				});
+				$("#sub_cat").append(options);				
+				//$("#distric").show();	
+			} 
+			
+			});
+		}	
 		</script>

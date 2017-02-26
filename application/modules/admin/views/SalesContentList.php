@@ -36,11 +36,11 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>User Name</th>
-                          <th>Email</th>
-						  <th>Phone</th>
-                          <th>Date</th>
+                          <th>Title</th>
+                          <th>Description</th>
+                          <th>Image</th>
+						  <th>Category name</th>
+                          <th></th>
                           
                         </tr>
                       </thead>
@@ -51,17 +51,22 @@
 					  /*if( ! ini_get('date.timezone') )
 					{
 						date_default_timezone_set('Asia/Kolkata');
-					}
-					 foreach($data as $vendor){*/
+					}*/
+					if(!empty($data)){
+						foreach($data as $content){
 					  ?>
                         <tr>
-                          <td><?php //echo $vendor->name;?></td>
-                          <td><?php //echo $vendor->user_name;?></td>
-                          <td><?php //echo $vendor->user_email;?></td>
-						  <td><?php //echo $vendor->phone;?></td>
-                           <td><?php //echo date ("d/M/Y",strtotime($vendor->create_date));?></td>
+                          <td><?php echo $content->content_title;?></td>
+                          <td><?php echo substr($content->content_description, 0,250);?></td>
+                          <td><img src="<?php echo base_url()?>uploads/<?php echo $content->content_image;?>" style="width:100px;height:100px;"/></td>
+						  <td><?php echo $content->title;?></td>
+                           <td><img src="<?php echo base_url()?>images/icon/edit.png" /> | 
+						  <a href="<?php echo base_url()?>admin/deleteSalesContent/<?php echo $content->content_id?>" > <img src="<?php echo base_url()?>images/icon/del.png"
+						  onclick="return confirm('Are you sure you want to delete?');" /></a></td>
                          </tr>
-					<?php// }?>	 
+					<?php }
+					}
+					?>	 
                         </tbody>
                     </table>
                   </div>

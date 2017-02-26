@@ -26,6 +26,7 @@
     <link href="<?php echo base_url();?>admin_assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 	<script src="<?php echo base_url();?>admin_assets/editor/ckeditor.js"></script>
 	<script src="<?php echo base_url();?>admin_assets/editor/js/sample.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="<?php echo base_url();?>admin_assets/editor/css/samples.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>admin_assets/editor/toolbarconfigurator/lib/codemirror/neo.css">
 </head>

@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		if(!$this->session->userdata('auth'))
 		{
-			redirect(site_url()."/auth/");
+			redirect(base_url()."auth/");
 		}
 		else if($this->session->userdata('auth')) 
 		{
@@ -118,13 +118,13 @@ class Admin extends CI_Controller {
 	*/
 	public function salesContentList()
 	{
-		/*$categoryquery= $this->db->query("Select * from category");
+		$contentquery= $this->db->query("SELECT *, sales_content.id as content_id FROM `sales_content` inner join sales_subcategory on sales_content.cat_id=sales_subcategory.id ");
 		$data=array();
-		foreach($categoryquery->result() as $obj)
+		foreach($contentquery->result() as $obj)
 		{
 		$data['data'][]=$obj;
-		}*/
-		_adminLayout("salesContentList");
+		}
+		_adminLayout("salesContentList",$data);
 	}
 	/**/
 	public function addSalesContent(){
@@ -147,6 +147,18 @@ class Admin extends CI_Controller {
 	/**/
 	public function addSalesCategory(){
 		_adminLayout("addSalesCategory");
+	}
+	/**/
+	public function subCatValue(){
+		$this->output->set_content_type('application/json');
+		if(!empty($this->input->post('parentID'))){
+			$parentID = $this->input->post('parentID');
+			$pquery = $this->db->query("Select * from sales_subcategory where parent_id='$parentID' ");
+			$data= array();
+			echo json_encode($pquery->result());
+			
+		}
+		//echo "aaaaaaaaaaaaa".$this->input->post('parentID'); die;
 	}
 	/**/
 	public function insertSalesCategory(){
@@ -234,6 +246,50 @@ class Admin extends CI_Controller {
 		
 		}
 	}
+	/**/
+	public function insertSalesContent(){
+		/*$this->load->library('form_validation');
+		if ($this->form_validation->run('subCategoryForm') == FALSE)
+		{
+		 _adminLayout("addSalessubcategory");
+		}
+		else{*/
+		$content_title = $this->input->post('content_title');
+		$content_desc = $this->input->post('content_desc');
+		$sub_cat = $this->input->post('sub_cat');
+		$data = array(
+			'content_title' => $content_title,
+			'content_description' => $content_desc,
+			'cat_id' => $sub_cat,
+			'content_image' => ''
+		);
+		if($this->db->insert('sales_content', $data)){
+			$inser_id= $this->db->insert_id();
+		}		
+		$config['upload_path']          = './uploads/';
+     	$config['allowed_types']        = 'gif|jpg|png|jpeg';
+     	$config['max_size']             = 10210;
+     	$config['max_width']            = 10254;
+     	$config['max_height']           = 7682;
+
+        $this->load->library('upload', $config);
+
+         if ( ! $this->upload->do_upload('content_img'))
+         {
+			 //echo "uploadfail"; die;
+          	$error = array('error' => $this->upload->display_errors());
+
+          	_adminLayout('addSalesContent', $error);
+          }
+				else{
+				$data = array('upload_data' => $this->upload->data(), 'scid' => $inser_id);
+				
+				 _adminLayout('upload_success', $data);
+				 
+				 }
+		
+		//}
+	}
 	
 	/**/
 	public function deleteSalesCategory(){
@@ -255,6 +311,32 @@ class Admin extends CI_Controller {
 				_adminLayout('SalesCategoryList');
 			}
 		}
+		
+	}
+	/**/
+	public function deleteSalesContent(){
+		 $rowId = $this->uri->segment(3); 
+		if(!empty($rowId)){
+			
+			$tableName= "sales_content";
+			$this->load->model("delete_model", "admin");
+			//$imgquery = $this->db->query("select content_image from sales_content where id='$rowId'");
+			$content_img = $this->db->query("select content_image from sales_content where id='$rowId'")->row()->content_image;
+			if($this->admin->dataDelete($rowId, $tableName)){
+				unlink("uploads/".$content_img);
+				$msg='<h5 style="color:red">Sales category is deleted successfully</h5>';
+		  		$this->session->set_flashdata('delmsg',$msg);
+		  		redirect(base_url()."admin/salesContentList");;
+			}
+			else{
+				$msg='<h5 style="color:red">Sales category is not deleted </h5>';
+		  		$this->session->set_flashdata('delmsg',$msg);
+		  		//redirect(base_url()."admin/SalesCategoryList");
+				_adminLayout('salesContentList');
+			}
+		}
+		
+	
 		
 	}
 	/**/
