@@ -27,6 +27,25 @@ $config = array(
                                          ),
 										  
 										 
+                                    ),
+				'salesContentForm' => array(
+									array(
+                                            'field' => 'content_title',
+                                            'label' => 'content_title',
+                                            'rules' => 'required'
+                                         ),
+                                    array(
+                                            'field' => 'content_title',
+                                            'label' => 'content_title',
+                                            'rules' => 'callback_sales_content_check'
+                                         ),
+									array(
+                                            'field' => 'sales_content',
+                                            'label' => 'sales_content',
+                                            'rules' => 'required'
+                                         ),	 
+										  
+										 
                                     )					
                                      
                );

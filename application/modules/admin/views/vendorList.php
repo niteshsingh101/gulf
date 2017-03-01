@@ -26,7 +26,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     
-					<input type="button" class="btn btn-success" onclick="location.href='<?php echo base_url();?>admin/addVendor/';" value="Add New Vendor" />
+					<input type="button" class="btn btn-success" onclick="location.href='<?php echo site_url();?>admin/addVendor/';" value="Add New Vendor" />
                      <div class="clearfix"></div>
 					</div>
                   <div class="x_content">

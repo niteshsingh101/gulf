@@ -26,7 +26,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     
-					<input type="button" class="btn btn-success" onclick="location.href='<?php echo base_url();?>admin/addSalesCategory/'" value="Add New Category" />
+					<input type="button" class="btn btn-success" onclick="location.href='<?php echo site_url();?>admin/addSalesCategory/'" value="Add New Category" />
                      <div class="clearfix"></div>
 					</div>
                   <div class="x_content">
@@ -61,9 +61,9 @@
                         <tr>
                           <td><?php echo $salcat->title;?></td>
                           <td><?php echo substr(preg_replace("/&#?[a-z0-9]+;/i","",$salcat->description),0,550) ;?></td>
-                          <td><img src="<?php echo base_url()?>uploads/<?php echo $salcat->image;?>" style="width:100px;height:100px;" /></td>
-						  <td><img src="<?php echo base_url()?>images/icon/edit.png" /> | 
-						  <a href="<?php echo base_url()?>admin/deleteSalesCategory/<?php echo $salcat->id?>" > <img src="<?php echo base_url()?>images/icon/del.png"
+                          <td><img src="<?php echo site_url()?>uploads/<?php echo $salcat->image;?>" style="width:100px;height:100px;" /></td>
+						  <td><img src="<?php echo site_url()?>images/icon/edit.png" /> | 
+						  <a href="<?php echo site_url()?>admin/deleteSalesCategory/<?php echo $salcat->id?>" > <img src="<?php echo site_url()?>images/icon/del.png"
 						  onclick="return confirm('Are you sure you want to delete?');" /></a></td>
                            
                          </tr>

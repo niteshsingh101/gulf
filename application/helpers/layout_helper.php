@@ -13,7 +13,7 @@ function _vendorLayout($filename,$data=null)
 	   $obj->load->view($filename,$data);
 	   $obj->load->view("common/footer");
 }
-function _userLayout($filename,$data=null)
+function _front_layout($filename,$data=null)
 {
 	   $obj=& get_instance();
 	   $obj->load->view("common/header");

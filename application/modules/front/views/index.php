@@ -1,5 +1,5 @@
 <?php 
-include("common/head.php");
+include("common/header.php");
 ?>
     <div class="main-wrap">
       <div class="container">

@@ -363,8 +363,8 @@
     </div>
 	
 	
-	<script type="text/javascript" src="/files/theme/plugins.js?1479177049"></script>
-	<script type="text/javascript" src="/files/theme/custom.js?1479177049"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>fron_assets/plugins.js?1479177049"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>fron_assets/custom.js?1479177049"></script>
 
 		<script type="text/javascript">
 

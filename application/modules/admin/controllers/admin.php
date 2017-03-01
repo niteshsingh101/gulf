@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		if(!$this->session->userdata('auth'))
 		{
-			redirect(base_url()."auth/");
+			redirect(site_url()."auth/");
 		}
 		else if($this->session->userdata('auth')) 
 		{
@@ -151,7 +151,8 @@ class Admin extends CI_Controller {
 	/**/
 	public function subCatValue(){
 		$this->output->set_content_type('application/json');
-		if(!empty($this->input->post('parentID'))){
+		$pid=$this->input->post('parentID');
+		if(!empty($pid)){
 			$parentID = $this->input->post('parentID');
 			$pquery = $this->db->query("Select * from sales_subcategory where parent_id='$parentID' ");
 			$data= array();
@@ -388,8 +389,6 @@ class Admin extends CI_Controller {
 				return TRUE;
 			}
 		}
-
-	
 	/*User name validation*/
 	public function username_check($user_name)
 		{
@@ -403,6 +402,213 @@ class Admin extends CI_Controller {
 			{
 				return TRUE;
 			}
-		}			
+		}	
+    /*
+     @author: Aditya 
+	 @desc: displaying all page list
+    */	
+	/**Page module code start from here**/
+	public function pageList()
+	{
+		$this->db->order_by("id", "desc"); 
+		$query=$this->db->get("page");
+		$data=array();
+		if(!empty($query))
+		{
+			foreach($query->result_array() as $pageObj)
+			{
+				$pageObj['parent_page']='none';
+				$data['data'][]=$pageObj;
+
+			}
+		
+		}
+		_adminLayout("pageList",$data);
+	}
+	public function addPage()
+	{
+		$action=$this->input->post("action");
+		if(!empty($action) && $action=="addPage")
+		{
+			
+			$title = $this->input->post('title');
+		    $desc = $this->input->post('desc');
+		    ////////////////////
+			$config['upload_path']          = './uploads/';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 10210;
+			$config['max_width']            = 10254;
+			$config['max_height']           = 7682;
+			$this->load->library('upload', $config);
+		    if(!$this->upload->do_upload('img'))
+			  {
+				$error = array('error' => $this->upload->display_errors());
+				_adminLayout('addPage', $error);
+			  }
+			 else
+			  {
+				$image =$this->upload->data();
+			  }
+		  $data = array(
+				'title' => $title,
+				'description' => $desc,
+				'featured_image' => $image['file_name'],
+			);
+		    $this->db->insert('page', $data);
+			$query=$this->db->query("select max(id) as num from page");
+			$row=$query->row_array();
+		    $pageid=$row['num'];
+			$type=$_POST['type'];
+			if($_POST['type']!='' && count($_POST['type'])>0)
+			{
+					foreach($_POST as $k=>$v)
+					{
+						
+						if($k!='title' && $k!='desc' && $k!='action' && $k!='type')
+						  { 
+							 list($k1,$v1)=each($type);
+							 if($v1!='')
+							 {
+									 if($this->db->query("insert into `page_metadata` set page_id='$pageid', meta_key='$k', meta_value='$v1'"))
+									 {
+										$query1=$this->db->query("select max(id) as num1 from page_metadata");
+										$row1=$query1->row_array();
+										$pageid1=$row1['num1'];
+										$ppid="field_".$pageid1;
+										$this->db->query("insert into `page_metadata` set page_id='$pageid', meta_key='$ppid', meta_value='$v'");
+										
+									 }
+							 }
+						  }
+					}//end foreach here!
+			}//end if here!
+			
+			$this->session->set_flashdata("res","New page is added successfully");
+			redirect("/admin/pageList");
+			////////////////////
+		}//end action if here
+		
+		_adminLayout("addPage");
+	}
+	public function editPage()
+	{
+		$action=$this->input->post("action");
+		
+		if(!empty($action) && $action=="editPage")
+		{
+		
+         //////////////////////////
+            $title = $this->input->post('title');
+		    $desc = $this->input->post('desc');
+			$id = $this->input->post('id');
+		    ////////////////////
+			$config['upload_path']          = './uploads/';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 10210;
+			$config['max_width']            = 10254;
+			$config['max_height']           = 7682;
+			$this->load->library('upload', $config);
+		    if(!$this->upload->do_upload('img'))
+			  {
+				$error = array('error' => $this->upload->display_errors());
+				_adminLayout('addPage', $error);
+			  }
+			 else
+			  {
+				$image =$this->upload->data();
+			  }
+			if(is_array($image) && $image['file_name']!='')  
+			  {
+				$img=$image['file_name'];
+			  }
+			  else
+			  {
+				$img=$this->input->post("img1");  
+			  }
+		    $data = array(
+				'title' => $title,
+				'description' => $desc,
+				'featured_image' => $img,
+			);
+		   // $this->db->insert('page', $data);
+			$this->db->where('id', $id);
+            $this->db->update('page', $data); 
+			/////////////////////////////////////////////////////////////////////////////////////////
+		    $pageid=$id;
+			$type=$_POST['type'];
+			$this->db->query("delete from page_metadata where page_id='$pageid'");
+			if($_POST['type']!='' && count($_POST['type'])>0)
+			{
+					foreach($_POST as $k=>$v)
+					{
+						if($k!='title' && $k!='desc' && $k!='action' && $k!='id'  && $k!='img1' && $k!='type')
+						  { 
+							 list($k1,$v1)=each($type);
+							 if($v1!='')
+							 {
+									 if($this->db->query("insert into `page_metadata` set page_id='$pageid', meta_key='$k', meta_value='$v1'"))
+									 {
+										$query1=$this->db->query("select max(id) as num1 from page_metadata");
+										$row1=$query1->row_array();
+										$pageid1=$row1['num1'];
+										$ppid="field_".$pageid1;
+										$this->db->query("insert into `page_metadata` set page_id='$pageid', meta_key='$ppid', meta_value='$v'");
+										
+									 }
+							 }
+						  }
+					}//end foreach here!
+			}//end if here!
+			////////////////////////////////////////////////////////////////////////////////////////////
+			$this->session->set_flashdata("res","Page is edited successfully");		 
+		 /////////////////////////////
+		 redirect("admin/pageList");		
+		}
+		$id=$this->uri->segment(3);
+    	$query=$this->db->get_where("page",array("id"=>$id));
+		$row=$query->row_array();
+		$meta_query=$this->db->query("select * from page_metadata where page_id='$id'");
+		$metadata=array();
+		$count=0;
+		foreach($meta_query->result_array() as $meta_arr)
+		{
+			if(preg_match("/^title.*/",$meta_arr['meta_key'],$matchAll))
+				{
+					foreach($meta_query->result_array() as $metaSubArray)
+					{
+						
+						if($metaSubArray['meta_key']=="field_".$meta_arr['id'])
+						{
+							$val=$metaSubArray['meta_value'];
+							$field_title=str_replace("title_",'',$matchAll[0]);
+						}
+					}
+					
+					$metadata[]=array('title'=>$field_title,'name'=>$matchAll[0],'type'=>$meta_arr['meta_value'],'val'=>$val);
+					$count++;
+				}
+			
+		}
+	
+		$data=array("id"=>$id,"title"=>$row['title'],"desc"=>$row['description'],"img"=>$row['featured_image'],'metadata'=>$metadata);
+		_adminLayout("editPage",$data);
+		
+		
+	}
+	public function deletePage()
+	{
+		$id=$this->uri->segment(3);
+		$flag=$this->db->delete('page', array('id' => $id)); 
+		if($flag)
+		{
+		  $this->session->set_flashdata("res","Page is deleted successfully");	
+		  redirect("admin/pageList");	
+		}
+		else
+		{
+		redirect("admin/pageList");		
+		}
+	}
+	/**Page module code end over here**/
 		
 }//end class

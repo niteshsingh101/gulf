@@ -105,7 +105,7 @@
 			$("#sub_cat option").remove();
 			var options;
 			$.ajax({
-				url :'<?php echo base_url()?>admin/subCatValue',
+				url :'<?php echo site_url()?>admin/subCatValue',
 				type :'POST',
 				data : {'parentID': parentId},
 				success: function(result){

@@ -363,8 +363,8 @@
     </div>
 	
 	
-	<script type="text/javascript" src="assets/js/plugins.js?1479177049"></script>
-	<script type="text/javascript" src="assets/js/custom.js?1479177049"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>front_asset/js/plugins.js?1479177049"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>front_assets/js/custom.js?1479177049"></script>
 
 		<script type="text/javascript">
 

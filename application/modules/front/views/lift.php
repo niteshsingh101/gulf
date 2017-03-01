@@ -1,6 +1,3 @@
-<?php 
-include("common/inner_head.php");
-?>
 <div class="banner-wrap wsite-background wsite-custom-background" style="background-image: url(assets/images/1382047614.jpg) !important;">
 			<div class="container">
 				<div class="banner">
@@ -84,7 +81,7 @@ include("common/inner_head.php");
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0px;margin-right:0px;text-align:center">
 <a href='/civil-construction.html'>
-<img src="assets/images/civil-900x900px_1_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
+<img src="<?php echo base_url();?>front_assets/images/civil-900x900px_1_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
@@ -97,7 +94,7 @@ include("common/inner_head.php");
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0px;margin-right:0px;text-align:center">
 <a href='/offshore.html'>
-<img src="assets/images/offshore-900x900px_1_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
+<img src="<?php echo base_url();?>front_assets/images/offshore-900x900px_1_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
@@ -110,7 +107,7 @@ include("common/inner_head.php");
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0px;margin-right:0px;text-align:center">
 <a href='/oil--gas.html'>
-<img src="assets/images/oil-gas-900x900px_1_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
+<img src="<?php echo base_url();?>front_assets/images/oil-gas-900x900px_1_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
@@ -123,7 +120,7 @@ include("common/inner_head.php");
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0px;margin-right:0px;text-align:center">
 <a href='/energy.html'>
-<img src="assets/images/energy-900x900px_1_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
+<img src="<?php echo base_url();?>front_assets/images/energy-900x900px_1_orig.jpg" alt="Picture" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
@@ -194,28 +191,28 @@ include("common/inner_head.php");
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:30px;padding-bottom:30px;margin-left:0px;margin-right:0px;text-align:center">
 <a>
-<img src="assets/images/boom_orig.png" alt="Picture" style="width:auto;max-width:100%" />
+<img src="<?php echo base_url();?>front_assets/images/boom_orig.png" alt="Picture" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:30px;padding-bottom:30px;margin-left:0px;margin-right:0px;text-align:center">
 <a>
-<img src="assets/images/rt_orig.png" alt="Picture" style="width:auto;max-width:100%" />
+<img src="<?php echo base_url();?>front_assets/images/rt_orig.png" alt="Picture" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:30px;padding-bottom:30px;margin-left:0px;margin-right:0px;text-align:center">
 <a>
-<img src="assets/images/at_orig.png" alt="Picture" style="width:auto;max-width:100%" />
+<img src="<?php echo base_url();?>front_assets/images/at_orig.png" alt="Picture" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:30px;padding-bottom:30px;margin-left:0px;margin-right:0px;text-align:center">
 <a>
-<img src="assets/images/sc_orig.png" alt="Picture" style="width:auto;max-width:100%" />
+<img src="<?php echo base_url();?>front_assets/images/sc_orig.png" alt="Picture" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
@@ -229,7 +226,3 @@ include("common/inner_head.php");
 </div>
 	  	</div><!-- end container -->
 	  </div>
-<?php 
-include_once("common/inner_footer.php");  
-?>
-    

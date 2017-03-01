@@ -26,12 +26,11 @@
     <link href="<?php echo base_url();?>admin_assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 	<script src="<?php echo base_url();?>admin_assets/editor/ckeditor.js"></script>
 	<script src="<?php echo base_url();?>admin_assets/editor/js/sample.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<link rel="stylesheet" href="<?php echo base_url();?>admin_assets/editor/css/samples.css">
-	<link rel="stylesheet" href="<?php echo base_url();?>admin_assets/editor/toolbarconfigurator/lib/codemirror/neo.css">
+	    <!-- jQuery --> <script src="<?php echo base_url();?>/admin_assets/vendors/jquery/dist/jquery.min.js"></script>
 </head>
 
   <body class="nav-md">
+       <!-- page content -->
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -105,7 +104,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="<?php echo base_url();?>auth/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="<?php echo site_url();?>auth/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 

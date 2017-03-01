@@ -5,15 +5,15 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url();?>admin/">Dashboard</a></li>
+                      <li><a href="<?php echo site_url();?>admin/">Dashboard</a></li>
                     </ul>
                   </li>
-                  <li><a href="<?php echo base_url();?>admin/generalSetting"><i class="fa fa-wrench"></i>General Setting</a></li>
+                  <li><a href="<?php echo site_url();?>admin/generalSetting"><i class="fa fa-wrench"></i>General Setting</a></li>
                   <li><a><i class="fa fa-group"></i>Sales And Rentals<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url()?>admin/salesCategoryList">Category</a></li>
-                      <li><a href="<?php echo base_url()?>admin/SalesSubcategoryList">Subcategory</a></li>
-                      <li><a href="<?php echo base_url()?>admin/salesContentList">Content</a></li>
+                      <li><a href="<?php echo site_url()?>admin/salesCategoryList">Category</a></li>
+                      <li><a href="<?php echo site_url()?>admin/SalesSubcategoryList">Subcategory</a></li>
+                      <li><a href="<?php echo site_url()?>admin/salesContentList">Content</a></li>
                     </ul>
                   </li>
 
@@ -26,7 +26,7 @@
                   </li>
                   <li><a><i class="fa fa-group"></i>Page<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">View Pages</a></li>
+                      <li><a href="<?php echo site_url()?>admin/pageList">View Pages</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-group"></i>Slider<span class="fa fa-chevron-down"></span></a>

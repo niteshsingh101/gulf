@@ -19,24 +19,12 @@ class Front extends CI_Controller {
 	 */
 	public function __construct()
 	{
+		
 		parent::__construct();
-		
-		
 		$this->load->helper("layout_helper");
-	} 
-	/*
-	
-	*/
+	}
 	public function index()
 	{
-		_vendorLayout("index");
+		_front_layout("home");
 	}
-	/*
-	
-	
-	*/
-	/**/
-	  
-	
-
-}//end class
+}
