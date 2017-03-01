@@ -27,6 +27,19 @@
 		}
 					 
 	}
+	else if(!empty($upload_data['file_name']) && $slid!=null){
+		$file_name= $upload_data['file_name'];
+		$id= $slid;
+		$this->db->set('slider_image', $file_name);  
+		$this->db->where('id', $id); 
+		if($this->db->update('slider')){
+			$msg='<h5 style="color:green">Slider Added Successfully</h5>';
+		  	$this->session->set_flashdata('slidermsg',$msg);
+			//_adminLayout("admin/sliderList");
+			redirect(base_url()."admin/sliderList");	
+		}
+					 
+	}
 	else{
 		echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 	}

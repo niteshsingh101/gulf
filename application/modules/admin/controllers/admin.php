@@ -72,17 +72,22 @@ class Admin extends CI_Controller {
 	/*
 	
 	*/
-	public function addState()
+	public function addSlider()
 	{
-		_adminLayout("addState");
+		_adminLayout("addSlider");
 	}
 
 	/*
 	
 	*/
-	public function stateList()
+	public function sliderList()
 	{
-		_adminLayout("stateList");
+		$sbucatquery= $this->db->query("Select * from slider");
+		$data = array();
+		foreach($sbucatquery->result() as $result){
+			$data['data'][]= $result;
+		}
+		_adminLayout("sliderList", $data);
 	}
 	/*
 	
@@ -98,6 +103,44 @@ class Admin extends CI_Controller {
 	public function cityList()
 	{
 		_adminLayout("cityList");
+	}
+	
+	/**/
+	public function insertSlider(){
+		$slider_title = $this->input->post('slider_title');
+		$slider_desc = $this->input->post('slider_desc');
+		//$sub_cat = $this->input->post('sub_cat');
+		$data = array(
+			'title' => $slider_title,
+			'description' => $slider_desc,
+			'slider_image' => ''
+		);
+		if($this->db->insert('slider', $data)){
+			$inser_id= $this->db->insert_id();
+		}		
+		$config['upload_path']          = './uploads/';
+     	$config['allowed_types']        = 'gif|jpg|png|jpeg';
+     	$config['max_size']             = 10210;
+     	$config['max_width']            = 10254;
+     	$config['max_height']           = 7682;
+
+        $this->load->library('upload', $config);
+
+         if ( ! $this->upload->do_upload('slider_img'))
+         {
+			 //echo "uploadfail"; die;
+          	$error = array('error' => $this->upload->display_errors());
+
+          	_adminLayout('addSlider', $error);
+          }
+		else{
+			$data = array('upload_data' => $this->upload->data(), 'slid' => $inser_id);
+				
+			_adminLayout('upload_success', $data);
+				 
+		 }
+	
+		
 	}
 	/*
 	*/
@@ -238,12 +281,12 @@ class Admin extends CI_Controller {
 
           	_adminLayout('addSalesCategory', $error);
           }
-				else{
-				$data = array('upload_data' => $this->upload->data(), 'sid' => $inser_id);
+		else{
+			$data = array('upload_data' => $this->upload->data(), 'sid' => $inser_id);
 				
-				 _adminLayout('upload_success', $data);
+			_adminLayout('upload_success', $data);
 				 
-				 }
+			}
 		
 		}
 	}
@@ -352,14 +395,28 @@ class Admin extends CI_Controller {
 		  		$this->session->set_flashdata('delmsg',$msg);
 		  		redirect(base_url()."admin/SalesSubcategoryList");
 			}
-			else{
-				$msg='<h5 style="color:red">Sales category is not deleted </h5>';
-		  		$this->session->set_flashdata('delmsg',$msg);
-		  		//redirect(base_url()."admin/SalesSubcategoryList");
-				_adminLayout('SalesSubcategoryList');
-			}
+			
 		}
 		
+	}
+	/*
+	*/
+	public function deleteSlider(){
+		
+		$rowId = $this->uri->segment(3); 
+		if(!empty($rowId)){
+			
+			$tableName= "slider";
+			$this->load->model("delete_model", "admin");
+			$slider_image = $this->db->query("select slider_image from slider where id='$rowId'")->row()->slider_image;
+			if($this->admin->dataDelete($rowId, $tableName)){
+				unlink("uploads/".$slider_image);
+				$msg='<h5 style="color:red">Slider deleted successfully</h5>';
+		  		$this->session->set_flashdata('delmsg',$msg);
+		  		redirect(base_url()."admin/sliderList");
+			}
+			
+		}
 	}
 	
 	public function sales_category_check($category_name)

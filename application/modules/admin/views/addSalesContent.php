@@ -26,6 +26,7 @@
 
                     <!--<form class="form-horizontal form-label-left" novalidate>-->
 					<?php //echo validation_errors(); ?>
+					<input type="button" class="btn btn-success" onclick="location.href='<?php echo site_url();?>admin/salesContentList/'" value="Back" />
 					<?php $attributes = array('class' => 'form-horizontal form-label-left', 'id' => 'myform');
 					echo form_open_multipart('/admin/insertSalesContent', $attributes);?>
 
