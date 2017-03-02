@@ -60,7 +60,8 @@
                           <td><?php echo substr($content->content_description, 0,250);?></td>
                           <td><img src="<?php echo site_url()?>uploads/<?php echo $content->content_image;?>" style="width:100px;height:100px;"/></td>
 						  <td><?php echo $content->title;?></td>
-                           <td><img src="<?php echo site_url()?>images/icon/edit.png" /> | 
+                           <td><a href="<?php echo site_url()?>admin/editSalescontent/<?php echo $content->content_id?>" >
+						   <img src="<?php echo site_url()?>images/icon/edit.png" /></a> | 
 						  <a href="<?php echo site_url()?>admin/deleteSalesContent/<?php echo $content->content_id?>" > <img src="<?php echo site_url()?>images/icon/del.png"
 						  onclick="return confirm('Are you sure you want to delete?');" /></a></td>
                          </tr>

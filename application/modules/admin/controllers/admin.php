@@ -418,6 +418,256 @@ class Admin extends CI_Controller {
 			
 		}
 	}
+	/*Update Slider Function */
+	
+	public function editSlider(){
+	
+		
+		$action=$this->input->post("action");
+		
+		if(!empty($action) && $action=="editSlider")
+		{
+			$id = $this->input->post('id'); 
+         //////////////////////////
+            $title = $this->input->post('slider_title');
+		    $desc = $this->input->post('slider_desc');
+			
+		    ////////////////////
+			$config['upload_path']          = './uploads/';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 10210;
+			$config['max_width']            = 10254;
+			$config['max_height']           = 7682;
+			$this->load->library('upload', $config);
+		    if(!$this->upload->do_upload('slider_img'))
+			  {
+				$error = array('error' => $this->upload->display_errors());
+				_adminLayout('addSlider', $error);
+			  }
+			 else
+			  {
+				$image =$this->upload->data();
+			  }
+			if(is_array($image) && $image['file_name']!='')  
+			  {
+				$img=$image['file_name'];
+			  }
+			  else
+			  {
+				$img=$this->input->post("img1");  
+			  }
+		    $data = array(
+				'title' => $title,
+				'description' => $desc,
+				'slider_image' => $img,
+			);
+		   // $this->db->insert('page', $data);
+		   
+			$this->db->where('id', $id);
+            $this->db->update('slider', $data); 
+						
+			$this->session->set_flashdata("res","Slider is edited successfully");		 
+		 /////////////////////////////
+		 redirect("admin/sliderList");		
+		}
+		$id=$this->uri->segment(3);
+    	$query=$this->db->get_where("slider",array("id"=>$id));
+		$row=$query->row_array();
+		$data=array("id"=>$id,"title"=>$row['title'],"desc"=>$row['description'],"img"=>$row['slider_image']);
+		
+		_adminLayout("editSlider",$data);
+	}
+	/*Update Sales Category*/
+	public function editSalescategory(){
+	
+	
+		
+		$action=$this->input->post("action");
+		
+		if(!empty($action) && $action=="editSalescategory")
+		{
+			$id = $this->input->post('id'); 
+         //////////////////////////
+            $title = $this->input->post('cat_title');
+		    $desc = $this->input->post('cat_desc');
+			
+		    ////////////////////
+			$config['upload_path']          = './uploads/';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 10210;
+			$config['max_width']            = 10254;
+			$config['max_height']           = 7682;
+			$this->load->library('upload', $config);
+		    if(!$this->upload->do_upload('cat_img'))
+			  {
+				$error = array('error' => $this->upload->display_errors());
+				_adminLayout('addSalesCategory', $error);
+			  }
+			 else
+			  {
+				$image =$this->upload->data();
+			  }
+			if(is_array($image) && $image['file_name']!='')  
+			  {
+				$img=$image['file_name'];
+			  }
+			  else
+			  {
+				$img=$this->input->post("img1");  
+			  }
+		    $data = array(
+				'title' => $title,
+				'description' => $desc,
+				'image' => $img,
+			);
+		   // $this->db->insert('page', $data);
+		   
+			$this->db->where('id', $id);
+            $this->db->update('sales_category', $data); 
+						
+			$this->session->set_flashdata("res","Category is edited successfully");		 
+		 /////////////////////////////
+		 redirect("admin/salesCategoryList");		
+		}
+		$id=$this->uri->segment(3);
+    	$query=$this->db->get_where("sales_category",array("id"=>$id));
+		$row=$query->row_array();
+		$data=array("id"=>$id,"title"=>$row['title'],"desc"=>$row['description'],"img"=>$row['image']);
+		
+		_adminLayout("editSalescategory",$data);
+	
+	
+	}
+	/* Update Sales Subcategory */
+	
+	public function editSubcategory(){
+	
+		$action=$this->input->post("action");
+		
+		if(!empty($action) && $action=="editSubcategory")
+		{
+			$id = $this->input->post('id'); 
+         //////////////////////////
+            $title = $this->input->post('cat_title');
+		    $desc = $this->input->post('cat_desc');
+			$parent_cat = $this->input->post('parent_cat');
+			
+		    ////////////////////
+			$config['upload_path']          = './uploads/';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 10210;
+			$config['max_width']            = 10254;
+			$config['max_height']           = 7682;
+			$this->load->library('upload', $config);
+		    if(!$this->upload->do_upload('cat_img'))
+			  {
+				$error = array('error' => $this->upload->display_errors());
+				_adminLayout('addSalessubcategory', $error);
+			  }
+			 else
+			  {
+				$image =$this->upload->data();
+			  }
+			if(is_array($image) && $image['file_name']!='')  
+			  {
+				$img=$image['file_name'];
+			  }
+			  else
+			  {
+				$img=$this->input->post("img1");  
+			  }
+		    $data = array(
+				'title' => $title,
+				'description' => $desc,
+				'image' => $img,
+				'parent_id' => $parent_cat
+			);
+		   // $this->db->insert('page', $data);
+		   
+			$this->db->where('id', $id);
+            $this->db->update('sales_subcategory', $data); 
+						
+			$this->session->set_flashdata("res","SubCategory is edited successfully");		 
+		 /////////////////////////////
+		 redirect("admin/SalesSubcategoryList");		
+		}
+		$id=$this->uri->segment(3);
+    	$query=$this->db->get_where("sales_subcategory",array("id"=>$id));
+		$row=$query->row_array();
+		$data=array("id"=>$id,"title"=>$row['title'],"desc"=>$row['description'],"img"=>$row['image'],"parent_id"=>$row['parent_id']);
+		
+		_adminLayout("editSalesSubcategory",$data);
+	
+	
+	
+	
+	}
+	/* update Sales content*/
+	public function editSalescontent(){
+	
+		$action=$this->input->post("action");
+		
+		if(!empty($action) && $action=="editSalescontent")
+		{
+			$id = $this->input->post('id'); 
+         //////////////////////////
+            $title = $this->input->post('content_title');
+		    $desc = $this->input->post('content_desc');
+			$sub_cat = $this->input->post('sub_cat');
+			
+		    ////////////////////
+			$config['upload_path']          = './uploads/';
+			$config['allowed_types']        = 'gif|jpg|png|jpeg';
+			$config['max_size']             = 10210;
+			$config['max_width']            = 10254;
+			$config['max_height']           = 7682;
+			$this->load->library('upload', $config);
+		    if(!$this->upload->do_upload('content_img'))
+			  {
+				$error = array('error' => $this->upload->display_errors());
+				_adminLayout('addSalessubcategory', $error);
+			  }
+			 else
+			  {
+				$image =$this->upload->data();
+			  }
+			if(is_array($image) && $image['file_name']!='')  
+			  {
+				$img=$image['file_name'];
+			  }
+			  else
+			  {
+				$img=$this->input->post("img1");  
+			  }
+		    $data = array(
+				'content_title' => $title,
+				'content_description' => $desc,
+				'content_image' => $img,
+				'cat_id' => $sub_cat
+			);
+		   // $this->db->insert('page', $data);
+		   
+			$this->db->where('id', $id);
+            $this->db->update('sales_content', $data); 
+						
+			$this->session->set_flashdata("res","Content is edited successfully");		 
+		 /////////////////////////////
+		 redirect("admin/salesContentList");		
+		}
+		$id=$this->uri->segment(3);
+    	$query=$this->db->query("SELECT *, sales_content.id as content_id FROM `sales_content` inner join sales_subcategory on sales_content.cat_id=sales_subcategory.id 
+		where sales_content.id=$id");
+		$row=$query->row_array();
+		$data=array("id"=>$id,"title"=>$row['content_title'],"desc"=>$row['content_description'],
+		"img"=>$row['content_image'],"parent_id"=>$row['parent_id'],"cat_id"=>$row['cat_id']);
+		
+		_adminLayout("editSalescontent",$data);
+	
+	
+	
+	
+	
+	}
 	
 	public function sales_category_check($category_name)
 		{

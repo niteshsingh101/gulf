@@ -63,7 +63,8 @@
                           <td><?php echo $slider->title;?></td>
                           <td><?php echo substr(preg_replace("/&#?[a-z0-9]+;/i","",$slider->description),0,550) ;?></td>
                           <td><img src="<?php echo site_url()?>uploads/<?php echo $slider->slider_image;?>" style="width:100px;height:100px;" /></td>
-						  <td><img src="<?php echo site_url()?>images/icon/edit.png" /> | 
+						  <td><a href="<?php echo site_url()?>admin/editSlider/<?php echo $slider->id?>" >
+						  <img src="<?php echo site_url()?>images/icon/edit.png" /> </a>| 
 						  <a href="<?php echo site_url()?>admin/deleteSlider/<?php echo $slider->id?>" > <img src="<?php echo site_url()?>images/icon/del.png"
 						  onclick="return confirm('Are you sure you want to delete?');" /></a></td>
                            
